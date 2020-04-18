@@ -1,0 +1,10 @@
+[package]
+name = "actix-web-cra-ssr"
+license = "MIT OR Apache-2.0"
+version = "0.1.0"
+readme = "README.md"
+authors = ["bartekus <bartekus@gmail.com>"]
+repository = "https://github.com/bartekus/actix-web-cra-ssr/"
+edition = "2018"
+
+[dependencies]
