@@ -1,0 +1,56 @@
+header {
+    color: #9f9c9c;
+    padding: 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #282c34;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul {
+    display: flex;
+    align-items: baseline;
+    list-style-type: none;
+}
+
+header nav li {
+    margin-right: 15px;
+}
+
+header button {
+    border: none;
+    padding: 8px 25px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 1.25rem;
+    background-color: #282c34;
+}
+
+nav {
+    flex: 1;
+    color: #282c34;
+}
+
+.home-link {
+    margin-right: 1.5rem;
+}
+
+.logo {
+    height: 6vmin;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
