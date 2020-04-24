@@ -14,20 +14,25 @@ function getConfig(cfg, env, target) {
     chunks: 'all',
     name: true,
     cacheGroups: {
-      default: false,
+      // default: false,
+      vendor: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all',
+      },
     },
   };
 
   config.optimization.runtimeChunk = false;
 
-  config.output.filename = '[name].js';
-  config.output.chunkFilename = '[name].js';
-  config.plugins[5].options.filename = 'css/[name].css';
-  config.plugins[5].options.chunkFilename = 'css/[name].css';
+  config.output.filename = '[name].[contenthash].js';
+  config.output.chunkFilename = '[name].[contenthash].js';
+  config.plugins[5].options.filename = 'css/[name].[contenthash].css';
+  config.plugins[5].options.chunkFilename = 'css/[name].[contenthash].css';
 
-  config.module.rules[2].oneOf[0].options.name = 'media/[name].[ext]';
+  config.module.rules[2].oneOf[0].options.name = 'media/[name].[contenthash].[ext]';
   config.module.rules[2].oneOf[2].options.caller = { target };
-  config.module.rules[2].oneOf[7].options.name = 'media/[name].[ext]';
+  config.module.rules[2].oneOf[7].options.name = 'media/[name].[contenthash].[ext]';
 
   config.externals = target === 'node' ? ['@loadable/component', nodeExternals()] : undefined;
   config.output.path = config.output.path + `/${target}`;
