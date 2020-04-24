@@ -6,7 +6,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Layout from './components/Layout';
 import Loading from './components/Loading';
 
-import { HOME, ABOUT, DASHBOARD } from './Paths';
+import { HOME, ABOUT, DASHBOARD } from './RoutePaths';
 
 const AboutPage = loadable(
 () => import('./pages/AboutPage'),

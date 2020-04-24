@@ -1,15 +1,42 @@
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
-function getConfig(config, env, target) {
+function getConfig(cfg, env, target) {
+  const config = Object.assign({}, cfg);
+
   config.name = target;
   config.target = target;
   config.entry = `./src/index.${target}.tsx`;
+
+  config.optimization.splitChunks = {
+    chunks: 'all',
+    name: true,
+    cacheGroups: {
+      default: false,
+    },
+  };
+
+  config.optimization.runtimeChunk = false;
+
+  config.output.filename = '[name].js';
+  config.output.chunkFilename = '[name].js';
+  config.plugins[5].options.filename = 'css/[name].css';
+  config.plugins[5].options.chunkFilename = 'css/[name].css';
+
+  config.module.rules[2].oneOf[0].options.name = 'media/[name].[ext]';
   config.module.rules[2].oneOf[2].options.caller = { target };
+  config.module.rules[2].oneOf[7].options.name = 'media/[name].[ext]';
+
   config.externals = target === 'node' ? ['@loadable/component', nodeExternals()] : undefined;
   config.output.path = config.output.path + `/${target}`;
   config.output.libraryTarget = target === 'node' ? 'commonjs2' : undefined;
-  config.plugins.unshift(new LoadablePlugin());
+
+  config.plugins.splice(8, 1); //removes WorkboxWebpackPlugin
+  config.plugins.push(new ScriptExtHtmlWebpackPlugin());
+  config.plugins.push(new ResourceHintWebpackPlugin());
+  config.plugins.push(new LoadablePlugin());
 
   return config;
 }
