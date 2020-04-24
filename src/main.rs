@@ -3,7 +3,7 @@ use actix_files as fs;
 use actix_session::{ CookieSession };
 use actix_web::{ middleware, App, HttpServer, web, HttpResponse, guard };
 
-use actix_web_cra_ssr::backend::handlers::cra;
+use actix_web_cra_ssr::backend::handlers::{cra, misc};
 
 #[actix_rt::main]
 async fn main() -> io::Result<()> {
@@ -18,6 +18,7 @@ async fn main() -> io::Result<()> {
                 Files::new("/static", "static")
                     .show_files_listing()
             )
+            .service(misc::robots)
             .default_service(
                 web::resource("")
                     .route(
