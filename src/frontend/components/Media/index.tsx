@@ -1,5 +1,6 @@
 import React from 'react';
 
+import logo from '../../assets/logo.svg';
 import './Media.css';
 
 export default function Media() {
@@ -7,7 +8,7 @@ export default function Media() {
     <div className="media">
 
       <div className="img">
-        <img src="http://placehold.it/250x250" alt="Placeholder"/>
+        <img src={logo} alt="logo"/>
       </div>
       <h2 className="title">This is my title</h2>
       <div className="content">

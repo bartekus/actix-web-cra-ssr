@@ -2,6 +2,15 @@
 Rust Actix-web backend serving TS SSR CRA 
 
 # Back-End
+## Requirements
+Please generate your own tls ssl certs:
+
+### `openssl req -x509 -newkey rsa:4096 -nodes -keyout tls/key.pem -out tls/cert.pem -days 365 -subj '/CN=localhost'`
+
+And adjust chrome settings to allow their use:
+
+### `chrome://flags/#allow-insecure-localhost`
+
 ## Available Scripts
 
 In the project directory, you can run:
