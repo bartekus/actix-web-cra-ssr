@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 import './App.css';
 
+import * as serviceWorker from './serviceWorker';
+
 export default function App() {
   React.useEffect(() => {
     const cssStyles = document.querySelector('#ssr-css');
@@ -18,3 +20,5 @@ export default function App() {
   </BrowserRouter>
   );
 }
+
+serviceWorker.register();

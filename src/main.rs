@@ -26,6 +26,7 @@ async fn main() -> io::Result<()> {
                     .show_files_listing()
             )
             .service(misc::robots)
+            .service(misc::sw)
             .default_service(
                 web::resource("")
                     .route(

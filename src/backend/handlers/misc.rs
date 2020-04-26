@@ -5,3 +5,8 @@ use actix_web::{Result};
 pub async fn robots() -> Result<fs::NamedFile> {
     Ok(fs::NamedFile::open("static/robots.txt")?)
 }
+
+#[get("/service-worker.js")]
+pub async fn sw() -> Result<fs::NamedFile> {
+    Ok(fs::NamedFile::open("static/service-worker.js")?)
+}

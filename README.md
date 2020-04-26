@@ -7,9 +7,9 @@ Please generate your own tls ssl certs:
 
 ### `openssl req -x509 -newkey rsa:4096 -nodes -keyout tls/key.pem -out tls/cert.pem -days 365 -subj '/CN=localhost'`
 
-And adjust chrome settings to allow their use:
+and from terminal start chrome (macOS):
 
-### `chrome://flags/#allow-insecure-localhost`
+### `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir=/tmp/foo --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://127.0.0.1:8080`
 
 ## Available Scripts
 

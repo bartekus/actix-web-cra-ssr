@@ -38,7 +38,10 @@ function getConfig(cfg, env, target) {
   config.output.path = config.output.path + `/${target}`;
   config.output.libraryTarget = target === 'node' ? 'commonjs2' : undefined;
 
-  config.plugins.splice(8, 1); //removes WorkboxWebpackPlugin
+  if (target === 'node') {
+    config.plugins.splice(8, 1); //removes WorkboxWebpackPlugin
+  }
+
   config.plugins.push(new ScriptExtHtmlWebpackPlugin());
   config.plugins.push(new ResourceHintWebpackPlugin());
   config.plugins.push(new LoadablePlugin());
